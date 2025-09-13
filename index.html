@@ -193,13 +193,13 @@
         <div class="card" style="margin-top:12px">
           <form id="contactForm" action="https://formspree.io/f/xvgbyloj" method="POST">
             <div class="inline">
-              <input type="text" id="name" placeholder="Your name" required style="flex:1" />
-              <input type="tel" id="phone" placeholder="Phone (optional)" style="flex:1" />
+              <input type="text" name="name" placeholder="Your name" required style="flex:1" />
+              <input type="tel" name="phone" placeholder="Phone (optional)" style="flex:1" />
             </div>
 
             <div class="inline">
-              <input type="email" id="email" placeholder="Email address" required style="flex:1" />
-              <select id="level" required style="flex:1">
+              <input type="email" name="email" placeholder="Email address" required style="flex:1" />
+              <select name="level" required style="flex:1">
                 <option value="">Select level</option>
                 <option>Primary</option>
                 <option>GCSE</option>
@@ -208,23 +208,12 @@
               </select>
             </div>
 
-            <textarea id="message" placeholder="Short note: topics you want help with, preferred days/times" rows="4"></textarea>
+            <textarea name="message" placeholder="Short note: topics you want help with, preferred days/times" rows="4"></textarea>
 
             <div style="display:flex;gap:8px">
               <button type="submit" class="primary">Send request</button>
-              <button type="button" class="secondary" onclick="openMail()">Email me instead</button>
             </div>
-
-            <div id="formMsg" class="muted" style="margin-top:8px"></div>
           </form>
-          <script>
-            const form = document.getElementById('contactForm');
-            form.addEventListener('submit', e => {
-                setTimeout(() => {
-                    window.location.href = 'thank-you.html';
-                }, 500);
-            });
-            </script>
         </div>
       </section>
 
@@ -257,25 +246,6 @@
       a.click();
       URL.revokeObjectURL(a.href);
     });
-
-    function handleSubmit(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const level = document.getElementById('level').value;
-      const message = document.getElementById('message').value.trim();
-
-      const subject = encodeURIComponent('Tuition request from '+name+' ('+level+')');
-      let body = `Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0ALevel: ${level}%0D%0A%0D%0A${encodeURIComponent(message)}`;
-      window.location.href = `mailto:ashis.ghosh2003@gmail.com?subject=${subject}&body=${body}`;
-      document.getElementById('formMsg').textContent = 'Opening your mail app. If nothing happens, please email ashis.ghosh2003@gmail.com';
-      return false;
-    }
-
-    function openMail(){
-      window.location.href = 'mailto:ashis.ghosh2003@gmail.com';
-    }
 
     document.getElementById('bookBtn').addEventListener('click', ()=>{scrollToSection('contact');});
   </script>
