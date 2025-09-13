@@ -191,7 +191,7 @@
         <p class="muted">Fill the form and I'll email you within 24 hours to confirm availability.</p>
 
         <div class="card" style="margin-top:12px">
-          <form id="contactForm" onsubmit="return handleSubmit(event)">
+          <form id="contactForm" action="https://formspree.io/f/xvgbyloj" method="POST">
             <div class="inline">
               <input type="text" id="name" placeholder="Your name" required style="flex:1" />
               <input type="tel" id="phone" placeholder="Phone (optional)" style="flex:1" />
@@ -217,6 +217,14 @@
 
             <div id="formMsg" class="muted" style="margin-top:8px"></div>
           </form>
+          <script>
+            const form = document.getElementById('contactForm');
+            form.addEventListener('submit', e => {
+                setTimeout(() => {
+                    window.location.href = 'thank-you.html';
+                }, 500);
+            });
+            </script>
         </div>
       </section>
 
